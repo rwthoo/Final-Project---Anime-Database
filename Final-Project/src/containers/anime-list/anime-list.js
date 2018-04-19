@@ -15,9 +15,9 @@ export const AnimeList = (props) => (
       ))
     }
     {
-      (!props.animeFilm.length && props.appUsed && !props.pending) ?
+      (!props.animeFilms.length && props.appUsed && !props.pending) ?
       <div className="anime-list__nothing-found">
-        Uh oh! Try Again
+        Oops, Try Again
       </div> :
       ''
     }

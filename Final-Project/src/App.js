@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       pending: false,
       appUsed: false,
-      animeCards: [],
+      animeFilm: [],
       animespecies: [],
     };
   }
