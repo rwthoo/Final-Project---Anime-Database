@@ -1,23 +1,23 @@
 import React from 'react';
-import { AnimeList, Spinner } from '../../components';
+import { AnimeFilm, Spinner } from '../../components';
 import './anime-list.css';
 
 export const AnimeList = (props) => (
   <div className="anime-list">
     { props.pending ? <Spinner /> : ''}
     {
-      props.animeCards.map(card => (
-      <div className="anime-list__anime-card">
-        <AnimeCard
-          imageUrl={card.imageUrl}
+      props.animeFilms.map(film => (
+      <div className="anime-list__anime-film">
+        <AnimeFilm
+          imageUrl={film.imageUrl}
         />
       </div>
       ))
     }
     {
-      (!props.animeCards.length && props.appUsed && !props.pending) ?
+      (!props.animeFilm.length && props.appUsed && !props.pending) ?
       <div className="anime-list__nothing-found">
-      Uh Oh... we can't find any results
+        Uh oh! Try Again
       </div> :
       ''
     }

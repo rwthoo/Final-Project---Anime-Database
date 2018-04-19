@@ -10,43 +10,43 @@ class App extends Component {
       pending: false,
       appUsed: false,
       animeCards: [],
-      animeGenre: [],
+      animespecies: [],
     };
   }
 
-  searchAnimeCardByTitle(title) {
-    const api = 'https://myanimelist.net/anime.php?q=""';
-    const animeGenre = this.state.animeGenre;
+  searchAnimeFilmByTitle(title) {
+    const api = 'curl https://ghibliapi.herokuapp.com/films/58611129-2dbc-4a81-a72f-77ddfc1b1b49""';
+    const animespecies = this.state.animespecies;
 
 
-    var animeGenreString=animeGenre.join('|');
+    var animespeciesString=animespecies.join('|');
 
     this.setState({
-      animeCards: [],
+      animeFilm: [],
       pending: true,
       appUsed: true,
     });
 
-    fetch(api + title + '&genre=' + animeGenreString)
+    fetch(api + title + '&species=' + animespeciesString)
     .then(response => response.json())
     .then(data => {
         this.setState({
           pending: false,
-          animeCards: data.cards
+          animeFilm: data.films
         });
       }
     );
   }
 
-  handleAnimeGenreChange(e) {
-    const currentGenre = this.state.animeGenre;
+  handleAnimeSpeciesChange(e) {
+    const currentSpecies = this.state.animespecies;
 
     if(e.target.checked) {
-      const newGenre = currentGenre.concat(e.target.value);
-      this.setState({animeGenre: newGenre});
+      const newSpecies = currentSpecies.concat(e.target.value);
+      this.setState({animeGenre: newSpecies});
     } else {
-      const newGenre = currentGenre.filter(genre => genre!==e.target.value);
-      this.setState({animeGenre: newGenre});
+      const newSpecies = currentSpecies.filter(species => species!==e.target.value);
+      this.setState({animeSpecies: newSpecies});
     }
   }
 
@@ -55,13 +55,13 @@ class App extends Component {
       <div className="App">
         <div className="App__container">
           <AnimeSearch
-            onAnimeGenreChange={(e)=> this.handleAnimeGenreChange(e)}
-            search={(animeTitle) => this.searchAnimeCardByTitle(animeTitle)}
+            onAnimeSpeciesChange={(e)=> this.handleAnimeSpeciesChange(e)}
+            search={(animeTitle) => this.searchAnimeFilmByTitle(animeTitle)}
           />
           <AnimeList
             appUsed={this.state.appUsed}
             pending={this.state.pending}
-            animeCards={this.state.animeCards}
+            animeCards={this.state.animeFilms}
           />
         </div>
       </div>

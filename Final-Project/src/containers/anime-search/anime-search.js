@@ -2,10 +2,12 @@ import React from 'react';
 import { SearchBar, Checkbox } from '../../components';
 import './anime-search.css';
 
-const genre = [
-  'Action',
-  'Comedy',
-  'Horror'
+const species = [
+  'Human',
+  'God',
+  'Spirit',
+  'Demon',
+  'Animal'
 ];
 
 export const AnimeSearch = (props) => (
@@ -17,13 +19,13 @@ export const AnimeSearch = (props) => (
     </div>
     <SearchBar
       buttonText="search anime"
-      placeholder="Anime ex. Dragonball Z"
+      placeholder="Anime ex. Howls moving castle"
       search={props.search}
     />
     <div>
-      {genre.map(genre => (
+      {species.map(species => (
         <span>
-          <Checkbox onChange={props.onAnimeGenreChange} value={genre}/> {genre}
+          <Checkbox onChange={props.onAnimeSpeciesChange} value={species}/> {species}
         </span>
       ))}
     </div>
